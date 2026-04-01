@@ -1,0 +1,19 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-std=c11",
+      "-O2",
+      "-I./raylib-src/src",
+      "-c",
+      "-o",
+      "build/main.o",
+      "src/main.c"
+    ],
+    "directory": "/home/beratdogan/Documents/mangoX",
+    "file": "/home/beratdogan/Documents/mangoX/src/main.c",
+    "output": "/home/beratdogan/Documents/mangoX/build/main.o"
+  }
+]
