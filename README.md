@@ -7,8 +7,8 @@ The goal is to implement as much physics and math as possible by hand — no phy
 ## Features (in progress)
 
 - [x] Vec2 math (add, sub, scale, dot, length, normalize)
-- [ ] Rigid body
-- [ ] Euler / Verlet integration
+- [x] Rigid body (position, velocity, rotation, angular velocity, mass)
+- [x] Euler integration (gravity, motion)
 - [ ] Force accumulation
 - [ ] Collision detection (AABB, circle, SAT)
 - [ ] Collision resolution (impulse-based)

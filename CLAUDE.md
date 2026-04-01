@@ -31,16 +31,16 @@ src/
   main.c
   math/
     vec2.h / vec2.c
-  physics/       ← next
-  collision/     ← later
+  physics/
+    body.h / body.c
+  collision/     ← next
 ```
 
 ## Roadmap
 
 1. Math primitives (Vec2) ← done
-2. Rigid body
-3. Integration (Euler → Verlet)
-4. Forces
-5. Collision detection
-6. Collision resolution
-7. (Future) 3D version
+2. Rigid body + Euler integration ← done
+3. Force accumulation
+4. Collision detection (AABB, circle, SAT)
+5. Collision resolution (impulse-based)
+6. (Future) 3D version
