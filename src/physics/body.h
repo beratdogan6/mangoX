@@ -10,6 +10,7 @@ typedef struct {
     float rotation;
     float angular_velocity;
     float mass;
+    float radius;
 } Body;
 
 Body body_create(Vec2 position, float mass);

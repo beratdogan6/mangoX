@@ -1,11 +1,10 @@
+#include "collision/circle.h"
 #include "physics/body.h"
 #include "raylib.h"
 #include <stdio.h>
-#include <stdlib.h>
 
-#define MAX_BALLS 20
 #define BALL_RADIUS 20
-#define SPAWN_INTERVAL 0.8f
+#define HORIZONTAL_FORCE 2000.0f
 
 int main(void) {
     const int screen_width = 1280;
@@ -14,55 +13,34 @@ int main(void) {
     InitWindow(screen_width, screen_height, "mangoX - Physics Engine");
     SetTargetFPS(60);
 
-    Body balls[MAX_BALLS] = {0};
-    int active[MAX_BALLS] = {0};
-    float spawn_timer = 0;
+    Body a = body_create((Vec2){100, screen_height / 2}, 1.0f);
+    a.radius = BALL_RADIUS;
+
+    Body b = body_create((Vec2){screen_width - 100, screen_height / 2}, 1.0f);
+    b.radius = BALL_RADIUS;
 
     while (!WindowShouldClose()) {
         float dt = GetFrameTime();
 
-        // spawn
-        spawn_timer += dt;
-        if (spawn_timer >= SPAWN_INTERVAL) {
-            spawn_timer = 0;
-            for (int i = 0; i < MAX_BALLS; i++) {
-                if (!active[i]) {
-                    float x = (float)(rand() % screen_width);
-                    balls[i] = body_create((Vec2){x, -BALL_RADIUS}, 1.0f);
-                    active[i] = 1;
-                    break;
-                }
-            }
-        }
+        a = body_add_force(a, (Vec2){HORIZONTAL_FORCE, 981.0f * a.mass});
+        b = body_add_force(b, (Vec2){-HORIZONTAL_FORCE, 981.0f * b.mass});
 
-        // update
-        for (int i = 0; i < MAX_BALLS; i++) {
-            if (!active[i])
-                continue;
-            balls[i] = body_add_force(balls[i], (Vec2){0, 981.0f * balls[i].mass});
-            balls[i] = body_update(balls[i], dt);
-            if (balls[i].position.y > screen_height + BALL_RADIUS)
-                active[i] = 0;
-        }
+        a = body_update(a, dt);
+        b = body_update(b, dt);
+
+        bool hit = circle_intersects(a, b);
+        Color color_a = hit ? RED : RAYWHITE;
+        Color color_b = hit ? RED : RAYWHITE;
 
         BeginDrawing();
         ClearBackground(BLACK);
         DrawText("mangoX", 10, 10, 20, RAYWHITE);
 
-        // debug
-        int active_count = 0;
-        for (int i = 0; i < MAX_BALLS; i++)
-            active_count += active[i];
-
         char debug[128];
-        snprintf(debug, sizeof(debug), "FPS: %d\ndt: %.4f\nballs: %d/%d", GetFPS(), dt,
-                 active_count, MAX_BALLS);
+        snprintf(debug, sizeof(debug), "FPS: %d\ncollision: %s", GetFPS(), hit ? "YES" : "NO");
         DrawText(debug, screen_width - 160, 10, 18, GREEN);
-        for (int i = 0; i < MAX_BALLS; i++) {
-            if (!active[i])
-                continue;
-            DrawCircle((int)balls[i].position.x, (int)balls[i].position.y, BALL_RADIUS, RAYWHITE);
-        }
+        DrawCircle((int)a.position.x, (int)a.position.y, BALL_RADIUS, color_a);
+        DrawCircle((int)b.position.x, (int)b.position.y, BALL_RADIUS, color_b);
         EndDrawing();
     }
 

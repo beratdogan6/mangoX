@@ -41,6 +41,6 @@ src/
 1. Math primitives (Vec2) ← done
 2. Rigid body + Euler integration ← done
 3. Force accumulation ← done
-4. Collision detection (AABB, circle, SAT)
+4. Collision detection (AABB, circle, SAT) ← circle done
 5. Collision resolution (impulse-based)
 6. (Future) 3D version

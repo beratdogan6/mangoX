@@ -8,6 +8,7 @@ Body body_create(Vec2 position, float mass) {
     b.force = (Vec2){0, 0};
     b.angular_velocity = 0.0;
     b.rotation = 0.0;
+    b.radius = 0.0;
 
     return b;
 }
