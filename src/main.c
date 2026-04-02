@@ -37,7 +37,9 @@ int main(void) {
 
         // update
         for (int i = 0; i < MAX_BALLS; i++) {
-            if (!active[i]) continue;
+            if (!active[i])
+                continue;
+            balls[i] = body_add_force(balls[i], (Vec2){0, 981.0f * balls[i].mass});
             balls[i] = body_update(balls[i], dt);
             if (balls[i].position.y > screen_height + BALL_RADIUS)
                 active[i] = 0;
@@ -49,14 +51,16 @@ int main(void) {
 
         // debug
         int active_count = 0;
-        for (int i = 0; i < MAX_BALLS; i++) active_count += active[i];
+        for (int i = 0; i < MAX_BALLS; i++)
+            active_count += active[i];
 
         char debug[128];
-        snprintf(debug, sizeof(debug), "FPS: %d\ndt: %.4f\nballs: %d/%d",
-                 GetFPS(), dt, active_count, MAX_BALLS);
+        snprintf(debug, sizeof(debug), "FPS: %d\ndt: %.4f\nballs: %d/%d", GetFPS(), dt,
+                 active_count, MAX_BALLS);
         DrawText(debug, screen_width - 160, 10, 18, GREEN);
         for (int i = 0; i < MAX_BALLS; i++) {
-            if (!active[i]) continue;
+            if (!active[i])
+                continue;
             DrawCircle((int)balls[i].position.x, (int)balls[i].position.y, BALL_RADIUS, RAYWHITE);
         }
         EndDrawing();
