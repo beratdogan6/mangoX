@@ -15,22 +15,23 @@ int main(void) {
 
     Body a = body_create((Vec2){100, screen_height / 2}, 1.0f);
     a.radius = BALL_RADIUS;
+    a.velocity = (Vec2){200.0f, 0};
 
     Body b = body_create((Vec2){screen_width - 100, screen_height / 2}, 1.0f);
     b.radius = BALL_RADIUS;
+    b.velocity = (Vec2){-200.0f, 0};
 
     while (!WindowShouldClose()) {
         float dt = GetFrameTime();
-
-        a = body_add_force(a, (Vec2){HORIZONTAL_FORCE, 981.0f * a.mass});
-        b = body_add_force(b, (Vec2){-HORIZONTAL_FORCE, 981.0f * b.mass});
 
         a = body_update(a, dt);
         b = body_update(b, dt);
 
         bool hit = circle_intersects(a, b);
-        Color color_a = hit ? RED : RAYWHITE;
-        Color color_b = hit ? RED : RAYWHITE;
+        if (hit)
+            circle_resolve(&a, &b);
+        Color color_a = hit ? RED : BLUE;
+        Color color_b = hit ? RED : GREEN;
 
         BeginDrawing();
         ClearBackground(BLACK);

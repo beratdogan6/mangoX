@@ -42,5 +42,5 @@ src/
 2. Rigid body + Euler integration ← done
 3. Force accumulation ← done
 4. Collision detection (AABB, circle, SAT) ← circle done
-5. Collision resolution (impulse-based)
+5. Collision resolution (impulse-based) ← done
 6. (Future) 3D version

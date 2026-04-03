@@ -5,5 +5,6 @@
 #include <stdbool.h>
 
 bool circle_intersects(Body circleA, Body circleB);
+void circle_resolve(Body *circleA, Body *circleB);
 
 #endif // !CIRCLE_H
