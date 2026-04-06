@@ -1,5 +1,5 @@
 CC      = gcc
-CFLAGS  = -Wall -Wextra -std=c11 -O2
+CFLAGS  = -Wall -Wextra -std=c11 -O2 -D_GNU_SOURCE
 CFLAGS += -I./raylib-src/src
 
 LDFLAGS = -L./raylib-src/build/raylib
