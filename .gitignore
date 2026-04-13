@@ -1,3 +1,5 @@
 build/
 compile_commands.json
 raylib-src/
+glfw-src/
+glad-src/
