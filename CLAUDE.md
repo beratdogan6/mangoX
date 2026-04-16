@@ -2,7 +2,7 @@
 
 ## Project Purpose
 
-mangoX is a **hobby and learning project**. The goal is to learn both physics engine development and professional C programming from scratch.
+mangoX is a **hobby and learning project**. The goal is to learn both physics engine development and C++ programming from scratch.
 
 ## How to Assist
 
@@ -14,30 +14,33 @@ Instead:
 - Point out bugs and explain *why* they are bugs
 - Guide the user toward the solution without giving it away
 - Review code the user has written and give feedback
-- Answer questions about C, physics, or software design
+- Answer questions about C++, physics, or software design
 
 **Exception:** You may write or fix code when the user explicitly asks you to (e.g. boilerplate, tooling configs, non-physics/non-C-learning tasks like Makefile or editor setup).
 
 ## Project Stack
 
-- Language: C (C11)
-- Rendering: raylib (static, built from source at `raylib-src/`)
-- Build: Makefile with `find`-based source discovery
+- Language: C++ (C++17)
+- Rendering: OpenGL 3.3 Core + GLFW + GLAD
+- Build: Makefile with `find`-based source discovery (compiles `.c` and `.cpp`)
 - Formatter: clang-format (config at `.clang-format`)
 
 ## Project Structure
 
 ```
 src/
-  main.c
+  main.cpp
   math/
-    vec2.h / vec2.c
+    vec2.hpp
   physics/
-    body.h / body.c
+    body.hpp
   collision/
-    circle.h / circle.c
-    aabb.h / aabb.c
-    sat.h / sat.c
+    circle.hpp / circle.cpp
+    aabb.hpp / aabb.cpp
+    sat.hpp / sat.cpp
+  renderer/
+    window.hpp / window.cpp
+    shader.hpp / shader.cpp
 ```
 
 ## Roadmap
@@ -47,4 +50,6 @@ src/
 3. Force accumulation ← done
 4. Collision detection (AABB, circle, SAT) ← done
 5. Collision resolution (impulse-based) ← done
-6. (Next) 3D version
+6. Migrate codebase to C++ ← done
+7. Basic OpenGL renderer (window, shader, colored triangle) ← done
+8. (Next) 3D version — Vec3, Mat4, 3D rigid body

@@ -1,8 +1,8 @@
 # mangoX
 
-A 2D physics engine written in C from scratch, as a hobby and learning project.
+A physics engine written in C++ from scratch, as a hobby and learning project.
 
-The goal is to implement as much physics and math as possible by hand — no physics libraries, only [raylib](https://www.raylib.com/) for rendering.
+The goal is to implement physics and math by hand — no physics libraries. Rendering uses OpenGL 3.3 Core + GLFW + GLAD.
 
 ## Features
 
@@ -12,10 +12,14 @@ The goal is to implement as much physics and math as possible by hand — no phy
 - [x] Force accumulation
 - [x] Collision detection — circle, AABB, SAT (convex polygons)
 - [x] Collision resolution — impulse-based
+- [x] OpenGL renderer — window, shader, colored triangle
+- [ ] Vec3, Mat4
+- [ ] 3D rigid body
+- [ ] 3D collision detection
 
 ## Build
 
-Requires raylib built from source (already included at `raylib-src/`).
+Requires GLFW built from source (included at `glfw-src/`) and GLAD (included at `glad-src/`).
 
 ```bash
 make        # build
@@ -25,6 +29,7 @@ make clean  # remove build artifacts
 
 ## Dependencies
 
-- gcc
-- raylib (built from source, no system install needed)
+- g++
+- GLFW (built from source, no system install needed)
+- GLAD (included)
 - clang-format (optional, for formatting)
