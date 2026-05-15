@@ -2,7 +2,9 @@
 
 ## Project Purpose
 
-mangoX is a **hobby and learning project**. The goal is to learn both physics engine development and C++ programming from scratch.
+mangoX is a hobby and learning project — but it is built with **production-level standards**. Think of it as if you were re-implementing Unity's physics engine from scratch. Every system should be correct, robust, and well-designed. The fact that it's a learning project does not lower the bar; it raises it — because the goal is to understand *why* production engines do things the way they do.
+
+When advising on design or implementation, always think: *how would a real engine (Bullet, PhysX, Jolt) solve this?* Then guide the user toward that solution.
 
 ## How to Assist
 
