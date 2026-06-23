@@ -26,17 +26,17 @@ easy to isolate because we know exactly what correct output looks like.
 
 - [x] Window + OpenGL context setup (GLFW, no raylib)
 - [x] Shader pipeline: write first vertex + fragment shader
-- [ ] VAO / VBO — upload polygon geometry to the GPU
+- [x] VAO / VBO — upload polygon geometry to the GPU
 - [ ] Draw the Phase 1 polygon demo using raw OpenGL
 - [ ] Basic camera / projection matrix (orthographic for 2D)
 - [ ] Debug utilities: FPS counter, draw call stats
 
 ### 2b — C++ Migration
 
-- [ ] Port math primitives (Vec2, later Vec3) to C++ — keep it plain structs, no classes
-- [ ] Port Body, collision detection, SAT to C++
-- [ ] Use RAII where it makes sense (buffers, shader programs, window)
-- [ ] Avoid deep inheritance hierarchies — prefer composition
+- [x] Port math primitives (Vec2, later Vec3) to C++ — keep it plain structs, no classes
+- [x] Port Body, collision detection, SAT to C++
+- [x] Use RAII where it makes sense (buffers, shader programs, window)
+- [x] Avoid deep inheritance hierarchies — prefer composition
 
 ### 2c — ECS Architecture
 
@@ -47,7 +47,7 @@ easy to isolate because we know exactly what correct output looks like.
 
 ---
 
-## Phase 2 — Current Status (April 2026)
+## Phase 2 — Current Status (June 2026)
 
 C++ migration and basic OpenGL renderer are done:
 
@@ -57,6 +57,7 @@ C++ migration and basic OpenGL renderer are done:
 - [x] Vec2, Body, Circle, AABB, SAT ported to C++
 
 ECS architecture is not started yet — may revisit later.
+Phase 3 started on branch `feat/mat4`: Vec3, Mat4, Quat done; 3D rigid body next.
 
 ---
 
@@ -64,9 +65,10 @@ ECS architecture is not started yet — may revisit later.
 
 ### Next steps in order
 
-1. **Vec3** — extend Vec2 to 3D, add cross product
-2. **Mat4** — 4x4 matrix, needed for transform/view/projection
-3. **3D Rigid Body** — update Body to use Vec3
+1. **Vec3** — extend Vec2 to 3D, add cross product ← done
+2. **Mat4** — 4x4 matrix, needed for transform/view/projection ← done
+   - **Quat** — orientation primitive (w-last, Hamilton product, integrate) ← done
+3. **3D Rigid Body** — update Body to use Vec3 + Quat orientation, inverse inertia tensor
 4. **Camera** — view + perspective projection matrix
 5. **3D Mesh render** — draw a cube, connect to physics
 6. **3D Collision** — AABB, sphere, OBB
